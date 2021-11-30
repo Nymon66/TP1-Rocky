@@ -23,4 +23,16 @@ source "qemu" "example" {
 
 build {  
   sources = ["source.qemu.example"]
+  provisioner "shell" {
+    inline = [
+      "dnf install git",
+      "gitclone https://github.com/BastienBalaud/golang-myip",
+      "cd golang-myip",
+      "dnf install make",
+      "dnf install go",
+      "make"
+      "cd build"
+      "./server.x86_64"
+    ]
+  }
 }
