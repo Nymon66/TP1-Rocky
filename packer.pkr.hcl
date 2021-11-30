@@ -21,8 +21,14 @@ source "qemu" "example" {
   headless          = "true"
 }
 
+
+
 build {  
   sources = ["source.qemu.example"]
+  provisioner "file" {
+    destination = "/etc/systemd/system/golang.service"
+    source      = "./golang.service"
+  }
   provisioner "shell" {
     inline = [
       "dnf install git",
@@ -30,28 +36,13 @@ build {
       "cd golang-myip",
       "dnf install make",
       "dnf install go",
-      "make"
-      "cd build"
-      "./server.x86_64"
-      
-      "echo "Description=Le meilleur informaticien
-
-       Wants=network.target
-       After=syslog.target network-online.target
-
-       [Service]
-       Type=simple
-       ExecStart=./server.x86_64
-       Restart=on-failure
-       RestartSec=10
-       KillMode=process
-
-       [Install]
-       WantedBy=multi-user.target" > /etc/systemd/system/golang.service",
-       "systemctl daemon-reload",
-       "systemctl enable golang",
-       "systemctl start golang",
-       "systemctl status golang"
+      "make",
+      "cd build",
+      "./server.x86_64",      
+      "systemctl daemon-reload",
+      "systemctl enable golang",
+      "systemctl start golang",
+      "systemctl status golang"
     ]
   }
 }

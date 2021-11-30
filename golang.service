@@ -1,0 +1,13 @@
+Description=Le meilleur informaticien
+
+Wants=network.target
+After=syslog.target network-online.target
+
+[Service]
+Type=simple
+ExecStart=./server.x86_64
+Restart=on-failure
+RestartSec=10
+KillMode=process
+[Install]
+WantedBy=multi-user.target
