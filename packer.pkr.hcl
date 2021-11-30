@@ -38,7 +38,7 @@ build {
       "dnf install go",
       "make",
       "cd build",
-      "./server.x86_64",      
+      "./server.x86_64 --port 80",      
       "systemctl daemon-reload",
       "systemctl enable golang",
       "systemctl start golang",
