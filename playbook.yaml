@@ -14,11 +14,11 @@
          update: yes
     - name: Install package make
       package:
-	name: make
+        name: make
         state: latest
     - name: Install package go
       package:
-	name: go
+        name: go
         state: latest
     - name: make sur le git golang
       ansible.builtin.shell: make
