@@ -7,11 +7,11 @@
         name: git
         state: latest 
     - name: Example clone of a single branch
-      ansible.builtin.git:
+      git:
          repo: https://github.com/BastienBalaud/golang-myip
          dest: /opt
-         single_branch: yes
-         version: master
+         clone: yes
+         update: yes
     - name: Install package make
       package:
 	name: make
