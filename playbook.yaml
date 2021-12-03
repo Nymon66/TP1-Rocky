@@ -33,9 +33,6 @@
         content: |
           Description=Golang Service to run on start
 
-          Wants=network.target
-          After=syslog.target network-online.target
-
           [Service]
           Type=simple
           ExecStart=/opt/golang-myip/build/server.x86_64 --port 80
@@ -45,7 +42,7 @@
           [Install]
           WantedBy=multi-user.target
 
-    - name: Start service golang-myip, based on running process /root/golang-myip/golang.service
+    - name: Start service golang-myip, based on running process /etc/systemd/system/golang.service
       ansible.builtin.service:
         name: golang
         pattern: /etc/systemd/system/golang.service
