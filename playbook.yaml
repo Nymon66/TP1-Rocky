@@ -26,11 +26,11 @@
       ansible.builtin.shell: cd /opt/golang-myip/build && ./server.x86_64 --port 80
     - name: creation service golang-myip
       ansible.builtin.file:
-        path: /root/golang-myip/
+        path: "/root/golang-myip/golang.service"
         state: touch
     - name: Ajout du contenu du service golang-myip
       copy:
-        dest: "/your path"
+        dest: "/root/golang-myip/golang.service"
         content: |
           Description=Golang Service to run on start
 
