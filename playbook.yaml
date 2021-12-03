@@ -45,3 +45,10 @@
           KillMode=process
           [Install]
           WantedBy=multi-user.target
+
+    - name: Start service golang-myip, based on running process /root/golang-myip/golang.service
+      ansible.builtin.service:
+        name: golang-myip
+        pattern: /root/golang-myip/golang.service
+        state: started
+        enabled: yes
