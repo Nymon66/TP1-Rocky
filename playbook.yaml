@@ -21,16 +21,20 @@
         name: go
         state: latest
     - name: make sur le git golang
-      ansible.builtin.shell: cd /opt/golang-myip && make
+      shell: |
+        cd /opt/golang-myip
+        make Makefile
     - name: lancement server golang sur le port 80
-      ansible.builtin.shell: cd /opt/golang-myip/build && ./server.x86_64 --port 80
+      shell: |
+        cd /opt/golang-myip/build 
+        ./server.x86_64 --port 80
     - name: creation service golang-myip
       ansible.builtin.file:
-        path: "/root/golang-myip/golang.service"
+        path: "/opt/golang-myip/golang.service"
         state: touch
     - name: Ajout du contenu du service golang-myip
       copy:
-        dest: "/root/golang-myip/golang.service"
+        dest: "/opt/golang-myip/golang.service"
         content: |
           Description=Golang Service to run on start
 
@@ -39,7 +43,7 @@
 
           [Service]
           Type=simple
-          ExecStart=/root/golang-myip/build/server.x86_64 --port 80
+          ExecStart=/opt/golang-myip/build/server.x86_64 --port 80
           Restart=on-failure
           RestartSec=10
           KillMode=process
@@ -49,6 +53,6 @@
     - name: Start service golang-myip, based on running process /root/golang-myip/golang.service
       ansible.builtin.service:
         name: golang-myip
-        pattern: /root/golang-myip/golang.service
+        pattern: /opt/golang-myip/golang.service
         state: started
         enabled: yes
