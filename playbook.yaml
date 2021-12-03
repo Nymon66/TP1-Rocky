@@ -9,7 +9,7 @@
     - name: Example clone of a single branch
       git:
          repo: https://github.com/BastienBalaud/golang-myip
-         dest: /opt
+         dest: /opt/golang-myip/
          clone: yes
          update: yes
     - name: Install package make
@@ -20,6 +20,10 @@
       package:
         name: go
         state: latest
+    - name: Do make on build file
+      ansible.builtin.shell: make Makefile
+      args:
+        chdir: /opt/golang-myip/
     - name: lancement server golang sur le port 80
       shell: |
         cd /opt/golang-myip/build 
