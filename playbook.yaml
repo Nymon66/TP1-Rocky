@@ -25,7 +25,7 @@
         chdir: /opt/golang-myip/
     - name: creation service golang-myip
       ansible.builtin.file:
-        path: "/opt/golang-myip/golang.service"
+        path: "/etc/systemd/system/golang.service"
         state: touch
     - name: Ajout du contenu du service golang-myip
       copy:
@@ -48,6 +48,6 @@
     - name: Start service golang-myip, based on running process /root/golang-myip/golang.service
       ansible.builtin.service:
         name: golang-myip
-        pattern: /opt/golang-myip/golang.service
+        pattern: /etc/systemd/system/golang.service
         state: started
         enabled: yes
