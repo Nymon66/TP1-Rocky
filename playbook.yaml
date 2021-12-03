@@ -29,7 +29,7 @@
         state: touch
     - name: Ajout du contenu du service golang-myip
       copy:
-        dest: "/etc/systemd/system/"
+        dest: "/etc/systemd/system/golang.service"
         content: |
           Description=Golang Service to run on start
 
