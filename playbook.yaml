@@ -48,3 +48,9 @@
         pattern: /etc/systemd/system/golang.service
         state: started
         enabled: yes
+    - name: Deploy SSH Key
+      authorized_key: user=root
+                      key="ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILjIRqNf3oVs8vbAcoNHzXMxlS5fL6qqFxfdi221S9p6
+                           ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAmM7WeoXFKZGnDLV8RA3jfeYKPIYzTNIe3Yqr7Z11BV
+                           ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJXNu2wW1ssMqlzRd3q/YodypM77UNFz7tF6h2v+hYYZ"
+                      state=present
