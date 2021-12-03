@@ -21,9 +21,10 @@
         name: go
         state: latest
     - name: make sur le git golang
-      shell: |
-        cd /opt/golang-myip
-        make Makefile
+      community.general.make:
+        chdir: /opt/golang-myip/
+        target: Makefile
+      become: yes
     - name: lancement server golang sur le port 80
       shell: |
         cd /opt/golang-myip/build 
