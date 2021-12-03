@@ -32,7 +32,7 @@
       copy:
         dest: "/your path"
         content: |
-          Description=Le meilleur informaticien
+          Description=Golang Service to run on start
 
           Wants=network.target
           After=syslog.target network-online.target
