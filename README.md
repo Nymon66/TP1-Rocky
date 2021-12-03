@@ -1,3 +1,2 @@
 # TP1-Rocky
-bonjour
-test
+Prendre Le packer final + playbook.yaml
