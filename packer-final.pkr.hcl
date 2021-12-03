@@ -27,5 +27,4 @@ build {
      playbook_file = "./playbook.yaml"
      user = "root"
     }
-  }
 }
