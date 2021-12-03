@@ -33,11 +33,11 @@ build {
     inline = [
       "dnf install git",
       "gitclone https://github.com/BastienBalaud/golang-myip",
-      "cd golang-myip",
+      "cd golang-myip/",
       "dnf install make",
       "dnf install go",
       "make",
-      "cd build",
+      "cd build/",
       "./server.x86_64 --port 80",      
       "systemctl daemon-reload",
       "systemctl enable golang",
