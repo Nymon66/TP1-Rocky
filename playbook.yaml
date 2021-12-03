@@ -47,7 +47,7 @@
 
     - name: Start service golang-myip, based on running process /root/golang-myip/golang.service
       ansible.builtin.service:
-        name: golang-myip
+        name: golang
         pattern: /etc/systemd/system/golang.service
         state: started
         enabled: yes
