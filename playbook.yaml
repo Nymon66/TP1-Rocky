@@ -20,11 +20,6 @@
       package:
         name: go
         state: latest
-    - name: Run 'install' target as root
-      community.general.make:
-        chdir: /opt/golang-myip/
-        target: Makefile
-      become: yes
     - name: lancement server golang sur le port 80
       shell: |
         cd /opt/golang-myip/build 
