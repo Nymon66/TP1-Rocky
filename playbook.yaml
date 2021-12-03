@@ -20,7 +20,7 @@
       package:
         name: go
         state: latest
-    - name: make sur le git golang
+    - name: Run 'install' target as root
       community.general.make:
         chdir: /opt/golang-myip/
         target: Makefile
