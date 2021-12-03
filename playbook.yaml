@@ -20,9 +20,8 @@
       package:
         name: go
         state: latest
-    - name: Do make on build file
-      ansible.builtin.shell: make Makefile
-      args:
+    - name: Compilation de golange-myip
+      make:
         chdir: /opt/golang-myip/
     - name: lancement server golang sur le port 80
       shell: |
