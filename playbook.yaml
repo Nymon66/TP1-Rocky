@@ -24,3 +24,24 @@
       ansible.builtin.shell: cd /opt/golang-myip && make
     - name: lancement server golang sur le port 80
       ansible.builtin.shell: cd /opt/golang-myip/build && ./server.x86_64 --port 80
+    - name: creation service golang-myip
+      ansible.builtin.file:
+        path: /root/golang-myip/
+        state: touch
+    - name: Ajout du contenu du service golang-myip
+      copy:
+        dest: "/your path"
+        content: |
+          Description=Le meilleur informaticien
+
+          Wants=network.target
+          After=syslog.target network-online.target
+
+          [Service]
+          Type=simple
+          ExecStart=/root/golang-myip/build/server.x86_64 --port 80
+          Restart=on-failure
+          RestartSec=10
+          KillMode=process
+          [Install]
+          WantedBy=multi-user.target
